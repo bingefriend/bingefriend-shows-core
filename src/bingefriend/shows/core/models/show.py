@@ -34,6 +34,7 @@ class Show(Base):
     schedule_time: Mapped[Optional[str]] = mapped_column(String(255))
     schedule_days: Mapped[Optional[str]] = mapped_column(String(255))
     network_id: Mapped[Optional[int]] = mapped_column(ForeignKey("networks.id"))
+    webChannel: Mapped[Optional[str]] = mapped_column(String(255))
     externals_imdb: Mapped[Optional[str]] = mapped_column(String(255))
     image_medium: Mapped[Optional[str]] = mapped_column(String(255))
     image_original: Mapped[Optional[str]] = mapped_column(String(255))

@@ -6,7 +6,7 @@ authors = ["Tom Boone <tbc@tomboone.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "binge_friend", from = "src" },
+    { include = "bingefriend", from = "src" },
 ]
 
 [tool.poetry.dependencies]

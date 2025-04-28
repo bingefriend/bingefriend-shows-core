@@ -20,4 +20,4 @@ class ShowGenre(Base):
 
     # Relationships - referenced in this model
     show: Mapped["Show"] = relationship(back_populates="show_genres")
-    genre: Mapped["Genre"] = relationship(back_populates="shows")
+    genre: Mapped["Genre"] = relationship(back_populates="show_genres")

@@ -7,6 +7,7 @@ from .base import Base
 
 if TYPE_CHECKING:
     from .show import Show
+    from .season import Season
 
 
 class Network(Base):
@@ -24,4 +25,4 @@ class Network(Base):
 
     # Relationships - referencing this model
     shows: Mapped[list["Show"]] = relationship(back_populates="network")
-    seasons: Mapped[list["Show"]] = relationship(back_populates="network")
+    seasons: Mapped[list["Season"]] = relationship(back_populates="network")

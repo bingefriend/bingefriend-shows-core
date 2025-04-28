@@ -21,7 +21,3 @@ class ShowGenre(Base):
     # Relationships - referenced in this model
     show: Mapped["Show"] = relationship(back_populates="show_genres")
     genre: Mapped["Genre"] = relationship(back_populates="shows")
-
-    # Relationships - referencing this model
-    shows: Mapped[list["Show"]] = relationship(back_populates="show_genres")
-    genres: Mapped[list["Genre"]] = relationship(back_populates="shows")

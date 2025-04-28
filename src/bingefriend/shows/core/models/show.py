@@ -42,8 +42,8 @@ class Show(Base):
     updated: Mapped[Optional[int]] = mapped_column(Integer)
 
     # Relationships - referenced in this model
-    seasons: Mapped[list["Season"]] = relationship(back_populates="show", cascade="all, delete-orphan")
-    episodes: Mapped[list["Episode"]] = relationship(back_populates="show", cascade="all, delete-orphan")
+    seasons: Mapped["Season"] = relationship(back_populates="show", cascade="all, delete-orphan")
+    episodes: Mapped["Episode"] = relationship(back_populates="show", cascade="all, delete-orphan")
 
     # Relationships - referencing this model
     network: Mapped["Network"] = relationship(back_populates="shows")

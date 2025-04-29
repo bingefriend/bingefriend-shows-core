@@ -19,9 +19,9 @@ class Network(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     maze_id: Mapped[int] = mapped_column(unique=True, nullable=False)
     name: Mapped[Optional[str]] = mapped_column(String)
-    country_name: Mapped[Optional[str]] = mapped_column(String)
-    country_code: Mapped[Optional[str]] = mapped_column(String)
-    country_timezone: Mapped[Optional[str]] = mapped_column(String)
+    country_name: Mapped[Optional[str]] = mapped_column(String(255))
+    country_code: Mapped[Optional[str]] = mapped_column(String(255))
+    country_timezone: Mapped[Optional[str]] = mapped_column(String(255))
 
     # Relationships - referencing this model
     shows: Mapped[list["Show"]] = relationship(back_populates="network")

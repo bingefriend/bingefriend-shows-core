@@ -2,7 +2,7 @@
 
 from typing import Optional, TYPE_CHECKING
 from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from bingefriend.shows.core.models.base import Base
 
 if TYPE_CHECKING:
@@ -25,5 +25,5 @@ class WebChannel(Base):
     official_site: Mapped[Optional[str]] = mapped_column(String(255))
 
     # Relationships - referencing this model
-    shows: Mapped[list["Show"]] = mapped_column(back_populates="web_channel")
-    seasons: Mapped[list["Season"]] = mapped_column(back_populates="web_channel")
+    shows: Mapped[list["Show"]] = relationship(back_populates="web_channel")
+    seasons: Mapped[list["Season"]] = relationship(back_populates="web_channel")

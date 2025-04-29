@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from bingefriend.shows.core.models.network import Network
     from bingefriend.shows.core.models.season import Season
     from bingefriend.shows.core.models.show_genre import ShowGenre
+    from bingefriend.shows.core.models.web_channel import WebChannel
 
 
 class Show(Base):

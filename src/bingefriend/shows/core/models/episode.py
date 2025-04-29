@@ -1,15 +1,14 @@
 """SQLAlchemy model for an episode."""
 
 import datetime
-import typing
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from sqlalchemy import ForeignKey, Integer, String, Date, DateTime, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
-if typing.TYPE_CHECKING:
-    from .season import Season
-    from .show import Show
+if TYPE_CHECKING:
+    from bingefriend.shows.core.models.season import Season
+    from bingefriend.shows.core.models.show import Show
 
 
 class Episode(Base):

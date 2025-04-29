@@ -1,17 +1,16 @@
 """SQLAlchemy model for a show."""
 
-from typing import Optional
 import datetime
-import typing
+from typing import Optional, TYPE_CHECKING
 from sqlalchemy import String, Integer, Date, ForeignKey, Text
 from sqlalchemy.orm import mapped_column, Mapped, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
-if typing.TYPE_CHECKING:
-    from .episode import Episode
-    from .network import Network
-    from .season import Season
-    from .show_genre import ShowGenre
+if TYPE_CHECKING:
+    from bingefriend.shows.core.models.episode import Episode
+    from bingefriend.shows.core.models.network import Network
+    from bingefriend.shows.core.models.season import Season
+    from bingefriend.shows.core.models.show_genre import ShowGenre
 
 
 class Show(Base):
@@ -34,7 +33,7 @@ class Show(Base):
     schedule_time: Mapped[Optional[str]] = mapped_column(String(255))
     schedule_days: Mapped[Optional[str]] = mapped_column(String(255))
     network_id: Mapped[Optional[int]] = mapped_column(ForeignKey("networks.id"))
-    webChannel: Mapped[Optional[str]] = mapped_column(String(255))
+    webChannel_id: Mapped[Optional[int]] = mapped_column(ForeignKey("web_channel.id"))
     externals_imdb: Mapped[Optional[str]] = mapped_column(String(255))
     image_medium: Mapped[Optional[str]] = mapped_column(String(255))
     image_original: Mapped[Optional[str]] = mapped_column(String(255))
@@ -42,9 +41,10 @@ class Show(Base):
     updated: Mapped[Optional[int]] = mapped_column(Integer)
 
     # Relationships - referenced in this model
-    seasons: Mapped["Season"] = relationship(back_populates="show", cascade="all, delete-orphan")
-    episodes: Mapped["Episode"] = relationship(back_populates="show", cascade="all, delete-orphan")
+    network: Mapped["Network"] = relationship(back_populates="shows")
+    web_channel: Mapped[Optional["WebChannel"]] = relationship(back_populates="shows")
 
     # Relationships - referencing this model
-    network: Mapped["Network"] = relationship(back_populates="shows")
     show_genres: Mapped[list["ShowGenre"]] = relationship(back_populates="show")
+    seasons: Mapped["Season"] = relationship(back_populates="show", cascade="all, delete-orphan")
+    episodes: Mapped["Episode"] = relationship(back_populates="show", cascade="all, delete-orphan")

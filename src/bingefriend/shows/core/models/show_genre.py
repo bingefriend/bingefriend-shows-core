@@ -1,13 +1,13 @@
 """SQLAlchemy model for a show-genre association."""
 
-import typing
+from typing import TYPE_CHECKING
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
-if typing.TYPE_CHECKING:
-    from .genre import Genre
-    from .show import Show
+if TYPE_CHECKING:
+    from bingefriend.shows.core.models.genre import Genre
+    from bingefriend.shows.core.models.show import Show
 
 
 class ShowGenre(Base):

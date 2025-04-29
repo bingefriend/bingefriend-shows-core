@@ -1,16 +1,15 @@
 """SQLAlchemy model for a season."""
 
 import datetime
-import typing
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from sqlalchemy import ForeignKey, Integer, String, Date, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
-if typing.TYPE_CHECKING:
-    from .episode import Episode
-    from .network import Network
-    from .show import Show
+if TYPE_CHECKING:
+    from bingefriend.shows.core.models.episode import Episode
+    from bingefriend.shows.core.models.network import Network
+    from bingefriend.shows.core.models.show import Show
 
 
 class Season(Base):
@@ -28,6 +27,7 @@ class Season(Base):
     premiereDate: Mapped[Optional[datetime.date]] = mapped_column(Date)
     endDate: Mapped[Optional[datetime.date]] = mapped_column(Date)
     network_id: Mapped[Optional[int]] = mapped_column(ForeignKey("networks.id"))
+    webChannel_id: Mapped[Optional[int]] = mapped_column(ForeignKey("web_channel.id"))
     image_medium: Mapped[Optional[str]] = mapped_column(String(255))
     image_original: Mapped[Optional[str]] = mapped_column(String(255))
     summary: Mapped[Optional[str]] = mapped_column(Text)
@@ -35,6 +35,7 @@ class Season(Base):
 
     # Relationships - referenced in this model
     network: Mapped[Optional["Network"]] = relationship(back_populates="seasons")
+    web_channel: Mapped[Optional["WebChannel"]] = relationship(back_populates="seasons")
     show: Mapped["Show"] = relationship(back_populates="seasons")
 
     # Relationships - referencing this model

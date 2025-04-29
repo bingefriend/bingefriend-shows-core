@@ -1,12 +1,12 @@
 """SQLAlchemy model for a genre."""
 
-import typing
+from typing import TYPE_CHECKING
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
-if typing.TYPE_CHECKING:
-    from .show_genre import ShowGenre
+if TYPE_CHECKING:
+    from bingefriend.shows.core.models.show_genre import ShowGenre
 
 
 class Genre(Base):

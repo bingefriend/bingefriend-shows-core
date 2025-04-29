@@ -3,11 +3,11 @@ from typing import Optional
 from typing_extensions import TYPE_CHECKING
 from sqlalchemy import String
 from sqlalchemy.orm import mapped_column, Mapped, relationship
-from .base import Base
+from bingefriend.shows.core.models.base import Base
 
 if TYPE_CHECKING:
-    from .show import Show
-    from .season import Season
+    from bingefriend.shows.core.models.show import Show
+    from bingefriend.shows.core.models.season import Season
 
 
 class Network(Base):

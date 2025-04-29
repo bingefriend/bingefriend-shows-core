@@ -18,7 +18,7 @@ class Network(Base):
     # Attributes
     id: Mapped[int] = mapped_column(primary_key=True)
     maze_id: Mapped[int] = mapped_column(unique=True, nullable=False)
-    name: Mapped[Optional[str]] = mapped_column(String)
+    name: Mapped[Optional[str]] = mapped_column(String(255))
     country_name: Mapped[Optional[str]] = mapped_column(String(255))
     country_code: Mapped[Optional[str]] = mapped_column(String(255))
     country_timezone: Mapped[Optional[str]] = mapped_column(String(255))

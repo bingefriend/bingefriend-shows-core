@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from bingefriend.shows.core.models.show import Show
 
 
-class WebChannel:
+class WebChannel(Base):
     """Represents a web channel"""
 
     __tablename__ = "web_channel"

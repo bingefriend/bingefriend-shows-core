@@ -21,9 +21,8 @@ class Season(Base):
     # Attributes
     id: Mapped[int] = mapped_column(primary_key=True)
     maze_id: Mapped[int] = mapped_column(unique=True, nullable=False)
-    url: Mapped[Optional[str]] = mapped_column(String(255))
     number: Mapped[int] = mapped_column(Integer, nullable=False)
-    name: Mapped[Optional[str]] = mapped_column(String(255))
+    name: Mapped[Optional[str]] = mapped_column(Text)
     episodeOrder: Mapped[Optional[int]] = mapped_column(Integer)
     premiereDate: Mapped[Optional[datetime.date]] = mapped_column(Date)
     endDate: Mapped[Optional[datetime.date]] = mapped_column(Date)

@@ -22,8 +22,7 @@ class Show(Base):
     # Attributes
     id: Mapped[int] = mapped_column(primary_key=True)
     maze_id: Mapped[int] = mapped_column(unique=True, nullable=False)
-    url: Mapped[Optional[str]] = mapped_column(String(255))
-    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    name: Mapped[str] = mapped_column(Text, nullable=False)
     type: Mapped[str] = mapped_column(String(255), nullable=False)
     language: Mapped[Optional[str]] = mapped_column(String(255))
     status: Mapped[Optional[str]] = mapped_column(String(255))
